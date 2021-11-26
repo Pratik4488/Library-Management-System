@@ -45,6 +45,18 @@ const UserSchema = new mongoose.Schema({
         max:50,
         default: " "
     },
+    issued:{
+        type: Array,
+        default :[]
+    },
+    returned :{
+        type: Array,
+        default: []
+    },
+    reservation :{
+        type: Array,
+        default : []
+    },
     isAdmin:{
         type: Boolean,
         default: false,

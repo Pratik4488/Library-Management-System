@@ -1,5 +1,20 @@
 const router = require("express").Router();
 const User = require("../models/user");
+const Book = require("../models/book");
+
+
+
+
+
+// //validation
+
+// const Joi = require("@hapi/joi");
+// const schema = {
+//     name : Joi.string().min(6).required(),
+//     email: Joi.string().min(6).required()
+// }
+
+
 
 // register a new user --------------------------------------
 
@@ -35,6 +50,9 @@ router.post("/register", async (req, res) => {
 router.post("/login/", async (req, res)=>{
     try{
         const user = await User.findOne({username: req.body.username});
+        if(user== null){
+            return res.status(400).json("Can not find the user");
+        }
 
         !user && res.status(404).json("user not found!!!!")
 
@@ -65,7 +83,7 @@ router.put("/:id", async (req, res)=>{
             const user = await User.findByIdAndUpdate(req.params.id, {
                 $set: req.body,
             });
-            res.status(200).json("Account has been updated...")
+            res.status(200).json("Account has been updated...");
         }catch(err){
             res.status(500).json(err);
         }
@@ -113,6 +131,70 @@ router.get("/", async (req, res) =>{
     }
 })
 
+
+// issue a book---------------------------------------------------------------------------------------------------------------------
+
+
+router.put("/:id/issue", async (req, res) =>{
+    try{
+
+        const book= await Book.findById(req.params.id);
+        const currentUser = await User.findById(req.body.userId);
+
+        if(!currentUser.issued.includes(book._id)){
+            await currentUser.updateOne({$push: {issued: book._id}});
+            await book.updateOne({$set: { isIssued: true}});
+            res.status(200).json("User issued a book....");
+        }
+
+    }catch(err){
+        res.status(500).json(err);
+    }
+})
+
+
+// return a book -----------------------------------------------------------------------------------------------------------
+
+router.put("/:id/return", async (req, res) =>{
+    try{
+        const book= await Book.findById(req.params.id);
+        const currentUser = await User.findById(req.body.userId);
+
+        if(currentUser.issued.includes(book._id)){
+            await currentUser.updateOne({$pull: {issued: book._id}});
+            await currentUser.updateOne({$push: {returned: book._id}});
+            await book.updateOne({$set: { isIssued: false}});
+            res.status(200).json("User returned a book....");
+        }else{
+            return res.status(404).json("No book found to return.....")
+        }
+
+    }catch(err){
+        res.status(500).json(err);
+    }
+})
+
+
+// reserve a book ------------------------------------------------------------------------------------------------------------------
+
+
+
+router.put("/:id/reserve", async (req, res) =>{
+    try{
+
+        const book= await Book.findById(req.params.id);
+        const currentUser = await User.findById(req.body.userId);
+
+        if(!currentUser.issued.includes(book._id)){
+            await currentUser.updateOne({$push: {reservation: book._id}});
+            await book.updateOne({$set: { isReserved: true}});
+            res.status(200).json("User reserved a book....");
+        }
+
+    }catch(err){
+        res.status(500).json(err);
+    }
+})
 
 
 
