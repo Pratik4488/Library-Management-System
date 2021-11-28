@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- bootstrap cdn -->
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+      crossorigin="anonymous"
+    />
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+      crossorigin="anonymous"
+    ></script>
+    <link href="das.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main class="mainapp2">
+      <div
+        class="sides d-flex flex-column flex-shrink-0 p-3 text-white bg-dark"
+      >
+        <a
+          href="/"
+          class="
+            d-flex
+            align-items-center
+            mb-3 mb-md-0
+            me-md-auto
+            text-white text-decoration-none
+          "
+        >
+          <svg class="bi me-2" width="40" height="32">
+            <use xlink:href="#bootstrap" />
+          </svg>
+          <span class="fs-4">
+            <img src="icon-for-library-1.jpg" class="icon" />Bookstack</span
+          >
+        </a>
+        <hr />
+        <ul class="nav nav-pills flex-column mb-auto">
+          <li class="nav-item">
+            <a href="#" class="nav-link nav1 active" aria-current="page">
+              <svg class="bi me-2" width="16" height="16">
+                <use xlink:href="#home" />
+              </svg>
+              Dashboard
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link nav2 text-white">
+              <svg class="bi me-2" width="16" height="16">
+                <use xlink:href="#speedometer2" />
+              </svg>
+              Books Available
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link nav3 text-white">
+              <svg class="bi me-2" width="16" height="16">
+                <use xlink:href="#table" />
+              </svg>
+              Profile
+            </a>
+          </li>
+        </ul>
+        <hr />
+      </div>
+      <div class="logging">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="60"
+          height="60"
+          fill="currentColor"
+          class="bi bi-person-fill per"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"
+          />
+        </svg>
+        <button
+          onclick="window.location.href = 'login.html';"
+          type="button"
+          class="logo btn btn-outline-primary"
+        >
+          Log Out
+        </button>
+      </div>
+      <main class="app1">
+        <div class="welcome">
+          <span class="m"
+            >Welcome,Back <span class="namehome">Jonas</span></span
+          >
+        </div>
+        <!-- <button type="button" class="btns btn btn-light">Books Issued</button> -->
+        <div class="btns btn btn-light">Books Issued</div>
+        <table class="table tab table-dark table-hover table-borderless">
+          <thead>
+            <tr>
+              <th scope="col">SL NO</th>
+              <th scope="col">Book ID</th>
+              <th scope="col">Issued Dt</th>
+              <th scope="col">Expiry Dt</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+
+        <button type="button" class="btns2 btn btn-light">
+          Reserved Books
+        </button>
+        <table
+          class="table tableee tab2 table-dark table-hover table-borderless"
+        >
+          <thead>
+            <tr>
+              <th scope="col">SL NO</th>
+              <th scope="col">Book ID</th>
+              <th scope="col">Reservation Dt</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <div class="unresop">
+          <button type="button" class="btn uner btn-dark">Unreserve</button>
+          <input
+            class="bkiduns"
+            type="number"
+            placeholder="enter Book Id to Unreserve"
+          />
+        </div>
+      </main>
+      <main class="app2 hide">
+        <!-- <!-- <div class="welcome"><span class="m">Books Available</span></div>
+
+        <input
+          type="search"
+          placeholder="Enter the BOOKID to search for the book"
+          class="search1"
+        />
+        <button type="button" class="btnsearch1 btn btn-dark">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bs bi-search"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+            />
+           <!-- -->
+        <!-- <div class="bookop">
+          <button type="button" class="btn btn-dark">Issue</button>
+          <input
+            class="bkiduns"
+            type="number"
+            placeholder="enter Book Id to issue"
+          />
+          <br />
+          <button type="button" class="btn btn-dark">Reserve</button>
+          <input
+            class="bkiduns"
+            type="number"
+            placeholder="enter Book Id to reserve"
+          />
+        </div> -->
+        <!-- <button type="button" class="btn btns1 btn-light">Books list</button>
+        <table
+          class="table tabotable tab1 table-dark table-hover table-borderless"
+        >
+          <thead>
+            <tr>
+              <th scope="col">SL NO</th>
+              <th scope="col">Book ID</th>
+              <th scope="col">Title</th>
+              <th scope="col">Author</th>
+              <th scope="col">Rack NO</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table> -->
+
+        <input
+          type="number"
+          class="searchs"
+          placeholder="Enter BOOKID to search,Issue or Reserve book"
+        />
+        <button type="button" class="btn searchbtn btn-dark">Search</button>
+
+        <button type="button" class="btn issbtn btn-dark">Issue</button>
+        <button type="button" class="btn rebtn btn-dark">Reserve</button>
+        <div class="btn btns1 btn-light">Books list</div>
+        <table
+          class="table tabotable tab1 table-dark table-hover table-borderless"
+        >
+          <thead>
+            <tr>
+              <th scope="col">SL NO</th>
+              <th scope="col">Book ID</th>
+              <th scope="col">Title</th>
+              <th scope="col">Author</th>
+              <th scope="col">Rack NO</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </main>
+      <main class="app3 hide">
+        <div class="pro col-lg-8">
+          <div class="card shadow-sm">
+            <div class="card-header bg-transparent border-0">
+              <h3 class="mb-0">
+                <i class="far fa-clone pr-1"></i>General Information
+              </h3>
+            </div>
+            <div class="card-body pt-0">
+              <table class="table table-bordered">
+                <tr>
+                  <th width="30%">Name</th>
+                  <td width="2%">:</td>
+                  <td class="usen">Pratik Kumar</td>
+                </tr>
+                <tr>
+                  <th width="30%">user Id</th>
+                  <td width="2%">:</td>
+                  <td class="usid">1234</td>
+                </tr>
+                <tr>
+                  <th width="30%">Gender</th>
+                  <td width="2%">:</td>
+                  <td class="gen">Male</td>
+                </tr>
+                <tr>
+                  <th width="30%">Category</th>
+                  <td width="2%">:</td>
+                  <td class="cat">Undergraduate</td>
+                </tr>
+                <tr>
+                  <th width="30%">Phone Number</th>
+                  <td width="2%">:</td>
+                  <td class="phn">8340686505</td>
+                </tr>
+                <tr>
+                  <th width="30%">Email Id</th>
+                  <td width="2%">:</td>
+                  <td class="email">pratikkumar@gmail.com</td>
+                </tr>
+                <tr>
+                  <th width="30%">University</th>
+                  <td width="2%">:</td>
+                  <td>IIIT Bhubaneswar</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </main>
+    </main>
+    <script src="das.js"></script>
+  </body>
+</html>
